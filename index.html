@@ -2,166 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GamesGamesGames</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --main-bg: #0a0a0a;
-      --accent: #00ffc3;
-      --text: #e6e6e6;
-      --card-bg: #141414;
-      --glow: 0 0 20px #00ffc3;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background: linear-gradient(120deg, #000000, #0f0f0f, #000000);
-      color: var(--text);
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+      color: #fff;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
-      background: linear-gradient(90deg, #00ffc3, #009e9e);
-      color: #0a0a0a;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      box-shadow: 0 0 30px rgba(0, 255, 195, 0.5);
-      letter-spacing: 2px;
+      background: radial-gradient(circle at top, #1f1f1f, #0f0f0f);
+      border-bottom: 2px solid #0ff;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
     }
 
     nav {
-      background-color: #111;
       display: flex;
       justify-content: center;
       gap: 2rem;
-      padding: 1rem 0;
+      padding: 1rem;
+      background: #111;
+      border-bottom: 1px solid #333;
     }
 
     nav a {
-      color: var(--accent);
+      color: #0ff;
       text-decoration: none;
-      font-size: 1.1rem;
-      position: relative;
-      transition: 0.3s ease-in-out;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: var(--accent);
-      bottom: -5px;
-      left: 0;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: right;
-    }
-
-    nav a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
       color: #fff;
-      text-shadow: 0 0 10px var(--accent);
+      text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
     }
 
     main {
-      padding: 4rem 2rem;
+      padding: 2rem;
       text-align: center;
     }
 
-    h2 {
-      font-size: 2.8rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px var(--accent);
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
 
     .cta {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
+      color: #0ff;
       margin-bottom: 2rem;
-      color: #ccc;
+      text-shadow: 0 0 5px #0ff;
     }
 
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
     }
 
     .game-card {
-      background-color: var(--card-bg);
-      border-radius: 16px;
-      padding: 2rem 1rem;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: 0 0 10px rgba(0, 255, 195, 0.2);
-      transition: all 0.4s ease;
-      transform-style: preserve-3d;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
+      background: #1c1c1c;
+      border: 2px solid #0ff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      transition: all 0.3s ease;
     }
 
     .game-card:hover {
-      transform: scale(1.05) rotateX(5deg);
-      box-shadow: 0 0 20px #00ffc3, 0 0 40px #00ffc3 inset;
-      background: linear-gradient(135deg, #111, #222);
-    }
-
-    .game-card::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(0, 255, 195, 0.1), transparent);
-      top: -50%;
-      left: -50%;
-      transform: rotate(25deg);
-      transition: all 0.5s ease;
-      z-index: 0;
-    }
-
-    .game-card:hover::before {
-      transform: rotate(0deg) scale(1.5);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
     }
 
     .game-card a {
-      color: inherit;
+      color: #0ff;
+      font-size: 1.2rem;
       text-decoration: none;
-      position: relative;
-      z-index: 1;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .game-card a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #0ff;
     }
 
     @media (max-width: 600px) {
-      h2 {
+      header h1 {
         font-size: 2rem;
       }
-      .cta {
-        font-size: 1.1rem;
+
+      .game-card {
+        padding: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    GamesGamesGames
+    <h1>GamesGamesGames</h1>
   </header>
 
   <nav>
@@ -172,15 +124,22 @@
   </nav>
 
   <main>
-    <h2>Welcome to the Ultimate Gaming Hub</h2>
+    <h2>Welcome to the Ultimate Gaming Hub!</h2>
     <p class="cta">Play. Compete. Conquer.</p>
 
     <section class="game-grid">
-      <div class="game-card"><a href="games/game1.html" target="_blank">🎮 Game 1</a></div>
-      <div class="game-card"><a href="games/game2.html" target="_blank">🚀 Game 2</a></div>
-      <div class="game-card"><a href="games/game3.html" target="_blank">🧠 Game 3</a></div>
-      <div class="game-card"><a href="games/game4.html" target="_blank">💥 Game 4</a></div>
+      <div class="game-card">
+        <a href="Game_Files/Bomberman/Bomberman.html" target="_blank">💣 Bomberman</a>
+      </div>
+      <div class="game-card">
+        <a href="Game_Files/FlappyBird/FlappyBird.html" target="_blank">🐦 Flappy Bird</a>
+      </div>
+      <div class="game-card">
+        <a href="Game_Files/TankGame/TankGame.html" target="_blank">🛡️ Tank Game</a>
+      </div>
+      <!-- Add more below as needed -->
     </section>
   </main>
 </body>
 </html>
+<!-- Add more game cards as needed -->
