@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GamesGamesGames</title>
   <link rel="stylesheet" href="3_styling.css" />
 </head>
-<body class="dark-mode">
+<body>
   <header>
     <h1>GamesGamesGames</h1>
   </header>
@@ -16,54 +16,46 @@
     <a href="#">Games</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    <button id="loginBtn" class="btn-primary">Login</button>
+    <button id="loginBtn">Login</button>
   </nav>
 
   <main>
     <h2>Welcome to the Ultimate Gaming Hub!</h2>
     <p class="cta">Play. Compete. Conquer.</p>
 
-    <!-- Login Section -->
     <section class="login-section hidden" id="loginSection">
       <input type="text" id="username" placeholder="Username" />
       <input type="password" id="password" placeholder="Password" />
-      <button onclick="handleLogin()" class="btn-primary">Submit</button>
-      <p id="loginStatus" class="login-status"></p>
+      <button onclick="handleLogin()">Submit</button>
+      <p id="loginStatus"></p>
     </section>
 
-    <!-- User Stats Section -->
     <section id="userStats" class="hidden">
       <h3>Welcome, <span id="displayUsername"></span>!</h3>
-      <div class="xp-container">
-        <label>XP:</label>
-        <div class="xp-bar-bg">
-          <div id="xpBar" class="xp-bar-fill"></div>
-        </div>
-        <span id="xpText"></span>
+      <div class="xp-bar-container">
+        <div id="xpBar"></div>
       </div>
+      <p id="xpText"></p>
       <p>Level: <span id="level"></span></p>
     </section>
 
-    <!-- Settings -->
-    <section id="settings" class="settings-section">
-      <h3>Settings</h3>
-      <label class="switch">
-        <input type="checkbox" id="modeToggle" />
-        <span class="slider"></span>
-      </label>
-      <span id="modeLabel">Dark Mode</span>
-    </section>
+    <!-- New GUI/UI section -->
+    <section class="controls">
+      <h3>Customize Your Experience</h3>
 
-    <!-- Game Grid -->
-    <section class="game-grid">
-      <div class="game-card">
-        <a href="Game_Files/Bomberman/Bomberman.html" target="_blank">💣 Bomberman</a>
+      <div class="control-group">
+        <label for="volumeSlider">Volume</label>
+        <input type="range" id="volumeSlider" min="0" max="100" value="50" />
       </div>
-      <div class="game-card">
-        <a href="Game_Files/FlappyBird/FlappyBird.html" target="_blank">🐦 Flappy Bird</a>
+
+      <div class="control-group">
+        <label for="brightnessSlider">Brightness</label>
+        <input type="range" id="brightnessSlider" min="0" max="100" value="75" />
       </div>
-      <div class="game-card">
-        <a href="Game_Files/TankGame/TankGame.html" target="_blank">🛡️ Tank Game</a>
+
+      <div class="control-group">
+        <button id="resetSettings">Reset Settings</button>
+        <button id="applySettings">Apply Settings</button>
       </div>
     </section>
   </main>
