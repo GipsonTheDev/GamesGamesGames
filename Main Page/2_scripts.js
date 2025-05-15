@@ -13,7 +13,7 @@ function handleLogin() {
 
     document.getElementById('displayUsername').textContent = usernameInput;
 
-    fetch('xp_level.json')
+    fetch('4_xp_level.json')
       .then(res => res.json())
       .then(data => {
         const userData = data[usernameInput];
