@@ -1,1 +1,1 @@
-The repository and codespace for "GamesGamesGames" developement.
+The repository and codespace for "GamesGamesGames" developement and testing.
