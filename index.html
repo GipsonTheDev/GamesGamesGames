@@ -7,64 +7,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-bg: #0d0d0d;
-      --accent-color: #00ffcc;
-      --card-bg: #1a1a1a;
-      --text-light: #e6e6e6;
-      --hover-glow: 0 0 15px #00ffcc;
+      --main-bg: #0a0a0a;
+      --accent: #00ffc3;
+      --text: #e6e6e6;
+      --card-bg: #141414;
+      --glow: 0 0 20px #00ffc3;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Rajdhani', sans-serif;
-      background-color: var(--main-bg);
-      color: var(--text-light);
+      background: linear-gradient(120deg, #000000, #0f0f0f, #000000);
+      color: var(--text);
       overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(90deg, #00ffcc, #009999);
-      color: #0d0d0d;
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 1rem;
+      background: linear-gradient(90deg, #00ffc3, #009e9e);
+      color: #0a0a0a;
       font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      box-shadow: 0 0 30px rgba(0, 255, 195, 0.5);
       letter-spacing: 2px;
-      box-shadow: 0 4px 20px rgba(0, 255, 204, 0.3);
     }
 
     nav {
+      background-color: #111;
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 1rem 0;
-      background-color: #111;
     }
 
     nav a {
-      color: var(--accent-color);
+      color: var(--accent);
       text-decoration: none;
-      font-weight: bold;
       font-size: 1.1rem;
       position: relative;
-      transition: all 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
     }
 
     nav a::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: -5px;
       width: 100%;
       height: 2px;
-      background-color: var(--accent-color);
+      background: var(--accent);
+      bottom: -5px;
+      left: 0;
       transform: scaleX(0);
+      transition: transform 0.3s ease;
       transform-origin: right;
-      transition: transform 0.3s ease-in-out;
     }
 
     nav a:hover::after {
@@ -74,73 +74,94 @@
 
     nav a:hover {
       color: #fff;
-      text-shadow: 0 0 8px var(--accent-color);
+      text-shadow: 0 0 10px var(--accent);
     }
 
     main {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       text-align: center;
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent-color);
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--accent);
     }
 
     .cta {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin-bottom: 2rem;
       color: #ccc;
     }
 
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
-      padding: 2rem;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .game-card {
       background-color: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0, 255, 204, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-weight: bold;
-      font-size: 1.3rem;
+      border-radius: 16px;
+      padding: 2rem 1rem;
       color: #fff;
-      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.2);
+      transition: all 0.4s ease;
+      transform-style: preserve-3d;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05) rotateX(5deg);
+      box-shadow: 0 0 20px #00ffc3, 0 0 40px #00ffc3 inset;
+      background: linear-gradient(135deg, #111, #222);
     }
 
     .game-card::before {
-      content: "";
+      content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at center, rgba(0, 255, 204, 0.15), transparent 70%);
-      transform: scale(0);
-      transition: transform 0.5s ease;
+      background: radial-gradient(circle at center, rgba(0, 255, 195, 0.1), transparent);
+      top: -50%;
+      left: -50%;
+      transform: rotate(25deg);
+      transition: all 0.5s ease;
       z-index: 0;
     }
 
     .game-card:hover::before {
-      transform: scale(1);
+      transform: rotate(0deg) scale(1.5);
     }
 
-    .game-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 20px var(--accent-color);
+    .game-card a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 2rem;
+      }
+      .cta {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>GamesGamesGames</h1>
+    GamesGamesGames
   </header>
 
   <nav>
@@ -151,14 +172,14 @@
   </nav>
 
   <main>
-    <h2>Welcome to the ultimate gaming hub!</h2>
+    <h2>Welcome to the Ultimate Gaming Hub</h2>
     <p class="cta">Play. Compete. Conquer.</p>
 
     <section class="game-grid">
-      <div class="game-card">🎮 Game 1</div>
-      <div class="game-card">🚀 Game 2</div>
-      <div class="game-card">🧠 Game 3</div>
-      <div class="game-card">💥 Game 4</div>
+      <div class="game-card"><a href="games/game1.html" target="_blank">🎮 Game 1</a></div>
+      <div class="game-card"><a href="games/game2.html" target="_blank">🚀 Game 2</a></div>
+      <div class="game-card"><a href="games/game3.html" target="_blank">🧠 Game 3</a></div>
+      <div class="game-card"><a href="games/game4.html" target="_blank">💥 Game 4</a></div>
     </section>
   </main>
 </body>
