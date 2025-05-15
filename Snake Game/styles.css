@@ -1,0 +1,44 @@
+/* Center the game on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #282c34;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the canvas */
+canvas {
+  border: 2px solid white;
+  background-color: black;
+}
+
+/* Hide the game-over screen by default */
+#game-over {
+  display: none;
+  text-align: center;
+}
+
+/* Style the Game Over message and restart button */
+#game-over h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+#restart-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#restart-button:hover {
+  background-color: #0056b3;
+}
