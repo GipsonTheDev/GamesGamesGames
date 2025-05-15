@@ -1,45 +1,86 @@
-const users = {
-  player1: "gamesrock"
-};
+const loginBtn = document.getElementById('loginBtn');
+const loginSection = document.getElementById('loginSection');
+const userStats = document.getElementById('userStats');
+const displayUsername = document.getElementById('displayUsername');
+const xpBar = document.getElementById('xpBar');
+const xpText = document.getElementById('xpText');
+const levelText = document.getElementById('level');
+const loginStatus = document.getElementById('loginStatus');
+const modeToggle = document.getElementById('modeToggle');
+const modeLabel = document.getElementById('modeLabel');
 
-function handleLogin() {
-  const usernameInput = document.getElementById('username').value.trim();
-  const passwordInput = document.getElementById('password').value.trim();
-  const status = document.getElementById('loginStatus');
+let xpData = {};
 
-  if(users[usernameInput] && users[usernameInput] === passwordInput) {
-    status.textContent = '';
-    document.getElementById('loginSection').classList.add('hidden');
+// Toggle login section on button click
+loginBtn.addEventListener('click', () => {
+  loginSection.classList.toggle('hidden');
+  userStats.classList.add('hidden');
+  loginStatus.textContent = '';
+});
 
-    document.getElementById('displayUsername').textContent = usernameInput;
-
-    fetch('4_xp_level.json')
-      .then(res => res.json())
-      .then(data => {
-        const userData = data[usernameInput];
-        if(userData) {
-          document.getElementById('xp').textContent = userData.xp;
-          document.getElementById('level').textContent = userData.level;
-        } else {
-          document.getElementById('xp').textContent = 0;
-          document.getElementById('level').textContent = 0;
-        }
-        document.getElementById('userStats').classList.remove('hidden');
-      })
-      .catch(() => {
-        document.getElementById('xp').textContent = '?';
-        document.getElementById('level').textContent = '?';
-        document.getElementById('userStats').classList.remove('hidden');
-      });
-  } else {
-    status.textContent = 'Invalid username or password';
+// Fetch XP data from JSON file on page load
+async function fetchXPData() {
+  try {
+    const response = await fetch('xp_level.json');
+    if (!response.ok) throw new Error('Failed to load XP data');
+    xpData = await response.json();
+  } catch (error) {
+    console.error(error);
   }
 }
 
-// Optional: Clear login status message on typing to avoid confusion
-document.getElementById('username').addEventListener('input', () => {
-  document.getElementById('loginStatus').textContent = '';
+// Login Handler
+async function handleLogin() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value; // You can validate later
+
+  if (!username || !password) {
+    loginStatus.textContent = 'Please enter username and password.';
+    return;
+  }
+
+  if (!xpData[username]) {
+    loginStatus.textContent = 'User not found.';
+    return;
+  }
+
+  // Login success (mock)
+  loginStatus.textContent = '';
+  loginSection.classList.add('hidden');
+  userStats.classList.remove('hidden');
+
+  displayUsername.textContent = username;
+
+  updateXPBar(username);
+}
+
+// Update XP bar width and text
+function updateXPBar(username) {
+  const user = xpData[username];
+  if (!user) return;
+
+  const xp = user.xp;
+  const level = user.level;
+
+  // For demo: Assuming level up every 1000 XP * level number
+  const maxXPForLevel = level * 1000;
+  const percent = Math.min(100, (xp / maxXPForLevel) * 100);
+
+  xpBar.style.width = `${percent}%`;
+  xpText.textContent = `${xp} / ${maxXPForLevel} XP`;
+  levelText.textContent = level;
+}
+
+// Dark/Light Mode Toggle
+modeToggle.addEventListener('change', () => {
+  if (modeToggle.checked) {
+    document.body.classList.add('light-mode');
+    modeLabel.textContent = 'Light Mode';
+  } else {
+    document.body.classList.remove('light-mode');
+    modeLabel.textContent = 'Dark Mode';
+  }
 });
-document.getElementById('password').addEventListener('input', () => {
-  document.getElementById('loginStatus').textContent = '';
-});
+
+// Initial Load
+fetchXPData();

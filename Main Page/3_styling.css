@@ -6,6 +6,12 @@ body {
   background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
   color: #fff;
   overflow-x: hidden;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+body.light-mode {
+  background: #f0f0f0;
+  color: #111;
 }
 
 header {
@@ -13,12 +19,23 @@ header {
   padding: 2rem 1rem;
   background: radial-gradient(circle at top, #1f1f1f, #0f0f0f);
   border-bottom: 2px solid #0ff;
+  transition: background 0.5s, border-color 0.5s;
+}
+
+body.light-mode header {
+  background: #fff;
+  border-color: #0a8;
 }
 
 header h1 {
   font-size: 3rem;
   color: #0ff;
   text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+}
+
+body.light-mode header h1 {
+  color: #0a8;
+  text-shadow: none;
 }
 
 nav {
@@ -28,26 +45,66 @@ nav {
   padding: 1rem;
   background: #111;
   border-bottom: 1px solid #333;
+  transition: background 0.5s, border-color 0.5s;
 }
 
-nav a, nav button {
+body.light-mode nav {
+  background: #ddd;
+  border-color: #aaa;
+}
+
+nav a {
   color: #0ff;
-  background: none;
-  border: none;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
   transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
 }
 
-nav a:hover, nav button:hover {
+nav a:hover {
   color: #fff;
   text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+  background: rgba(0, 255, 255, 0.1);
+}
+
+body.light-mode nav a {
+  color: #0a8;
+}
+
+body.light-mode nav a:hover {
+  color: #000;
+  background: #a0f0b0;
+  text-shadow: none;
+}
+
+.btn-primary {
+  cursor: pointer;
+  background: #0ff;
+  color: #000;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 12px #0ff;
+}
+
+.btn-primary:hover {
+  background: #0aa;
+  color: #fff;
+  box-shadow: 0 0 20px #0affff;
 }
 
 main {
   padding: 2rem;
   text-align: center;
+  transition: color 0.5s;
+}
+
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .cta {
@@ -57,32 +114,9 @@ main {
   text-shadow: 0 0 5px #0ff;
 }
 
-.login-section input {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #0ff;
-  border-radius: 8px;
-  background: #1c1c1c;
-  color: white;
-}
-
-.login-section button {
-  padding: 0.5rem 1rem;
-  background: #0ff;
-  color: #000;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.login-section button:hover {
-  background: #00f;
-  color: #fff;
-}
-
-.hidden {
-  display: none;
+body.light-mode .cta {
+  color: #0a8;
+  text-shadow: none;
 }
 
 .game-grid {
@@ -117,4 +151,167 @@ main {
 .game-card a:hover {
   color: #fff;
   text-shadow: 0 0 10px #0ff;
+}
+
+body.light-mode .game-card {
+  background: #e0f7f7;
+  border-color: #0a8;
+  box-shadow: 0 0 15px rgba(10, 170, 136, 0.4);
+}
+
+body.light-mode .game-card a {
+  color: #0a8;
+}
+
+body.light-mode .game-card a:hover {
+  color: #056;
+  text-shadow: none;
+}
+
+/* Login Section */
+.login-section {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.login-section input {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #0ff;
+  background: transparent;
+  color: #fff;
+  transition: border-color 0.3s ease;
+  outline: none;
+  width: 200px;
+}
+
+.login-section input:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 10px #0ff;
+}
+
+body.light-mode .login-section input {
+  background: #fff;
+  color: #000;
+  border-color: #0a8;
+}
+
+body.light-mode .login-section input:focus {
+  border-color: #0a8;
+  box-shadow: 0 0 10px #0a8;
+}
+
+.login-status {
+  color: #f55;
+  font-weight: bold;
+  min-width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* XP Bar */
+.xp-container {
+  max-width: 300px;
+  margin: 1rem auto;
+  text-align: left;
+  font-weight: 600;
+  color: #0ff;
+}
+
+body.light-mode .xp-container {
+  color: #0a8;
+}
+
+.xp-bar-bg {
+  width: 100%;
+  height: 25px;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px #000;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0ff, #00f);
+  box-shadow: 0 0 10px #0ff, 0 0 15px #00f;
+  border-radius: 12px 0 0 12px;
+  transition: width 0.8s ease;
+}
+
+/* Settings Section */
+.settings-section {
+  margin: 2rem auto;
+  max-width: 300px;
+  text-align: center;
+  font-weight: 600;
+  color: #0ff;
+}
+
+body.light-mode .settings-section {
+  color: #0a8;
+}
+
+/* Dark/Light Mode Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 28px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #0ff;
+  box-shadow: 0 0 8px #0ff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+#modeLabel {
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
 }

@@ -5,14 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GamesGamesGames</title>
   <link rel="stylesheet" href="3_styling.css" />
-  <style>
-    /* Just in case, minimal style for hidden */
-    .hidden {
-      display: none;
-    }
-  </style>
 </head>
-<body>
+<body class="dark-mode">
   <header>
     <h1>GamesGamesGames</h1>
   </header>
@@ -22,28 +16,45 @@
     <a href="#">Games</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    <button id="loginBtn">Login</button>
+    <button id="loginBtn" class="btn-primary">Login</button>
   </nav>
 
   <main>
     <h2>Welcome to the Ultimate Gaming Hub!</h2>
     <p class="cta">Play. Compete. Conquer.</p>
 
-    <!-- Login Section Hidden Initially -->
-    <section id="loginSection" class="hidden">
-      <input type="text" id="username" placeholder="Username" autocomplete="off" />
-      <input type="password" id="password" placeholder="Password" autocomplete="off" />
-      <button id="submitLogin">Submit</button>
-      <p id="loginStatus" style="color: red; font-weight: bold;"></p>
+    <!-- Login Section -->
+    <section class="login-section hidden" id="loginSection">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="handleLogin()" class="btn-primary">Submit</button>
+      <p id="loginStatus" class="login-status"></p>
     </section>
 
-    <!-- User Stats Hidden Initially -->
+    <!-- User Stats Section -->
     <section id="userStats" class="hidden">
       <h3>Welcome, <span id="displayUsername"></span>!</h3>
-      <p>XP: <span id="xp"></span></p>
+      <div class="xp-container">
+        <label>XP:</label>
+        <div class="xp-bar-bg">
+          <div id="xpBar" class="xp-bar-fill"></div>
+        </div>
+        <span id="xpText"></span>
+      </div>
       <p>Level: <span id="level"></span></p>
     </section>
 
+    <!-- Settings -->
+    <section id="settings" class="settings-section">
+      <h3>Settings</h3>
+      <label class="switch">
+        <input type="checkbox" id="modeToggle" />
+        <span class="slider"></span>
+      </label>
+      <span id="modeLabel">Dark Mode</span>
+    </section>
+
+    <!-- Game Grid -->
     <section class="game-grid">
       <div class="game-card">
         <a href="Game_Files/Bomberman/Bomberman.html" target="_blank">💣 Bomberman</a>
@@ -58,26 +69,5 @@
   </main>
 
   <script src="2_scripts.js"></script>
-  <script>
-    // Show login section when login button is clicked
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const loginSection = document.getElementById('loginSection');
-      loginSection.classList.toggle('hidden');
-      // Clear previous messages and inputs
-      document.getElementById('loginStatus').textContent = '';
-      document.getElementById('username').value = '';
-      document.getElementById('password').value = '';
-    });
-
-    // Attach handleLogin to the submit button
-    document.getElementById('submitLogin').addEventListener('click', () => {
-      if(typeof handleLogin === 'function') {
-        handleLogin();
-      } else {
-        alert('handleLogin() function not found in scripts!');
-      }
-    });
-  </script>
 </body>
 </html>
-<!-- End of Main Page -->
