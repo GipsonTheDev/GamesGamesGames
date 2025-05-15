@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamesGamesGames</title>
+  <link rel="stylesheet" href="styling.css" />
+</head>
+<body>
+  <header>
+    <h1>GamesGamesGames</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <button id="loginBtn">Login</button>
+  </nav>
+
+  <main>
+    <h2>Welcome to the Ultimate Gaming Hub!</h2>
+    <p class="cta">Play. Compete. Conquer.</p>
+
+    <section class="login-section hidden" id="loginSection">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="handleLogin()">Submit</button>
+      <p id="loginStatus"></p>
+    </section>
+
+    <section id="userStats" class="hidden">
+      <h3>Welcome, <span id="displayUsername"></span>!</h3>
+      <p>XP: <span id="xp"></span></p>
+      <p>Level: <span id="level"></span></p>
+    </section>
+
+    <section class="game-grid">
+      <div class="game-card">
+        <a href="Game_Files/Bomberman/Bomberman.html" target="_blank">💣 Bomberman</a>
+      </div>
+      <div class="game-card">
+        <a href="Game_Files/FlappyBird/FlappyBird.html" target="_blank">🐦 Flappy Bird</a>
+      </div>
+      <div class="game-card">
+        <a href="Game_Files/TankGame/TankGame.html" target="_blank">🛡️ Tank Game</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

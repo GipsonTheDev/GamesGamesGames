@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(circle at top, #1f1f1f, #0f0f0f);
+  border-bottom: 2px solid #0ff;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: #111;
+  border-bottom: 1px solid #333;
+}
+
+nav a, nav button {
+  color: #0ff;
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav a:hover, nav button:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+}
+
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.cta {
+  font-size: 1.25rem;
+  color: #0ff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 5px #0ff;
+}
+
+.login-section input {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #0ff;
+  border-radius: 8px;
+  background: #1c1c1c;
+  color: white;
+}
+
+.login-section button {
+  padding: 0.5rem 1rem;
+  background: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-section button:hover {
+  background: #00f;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.game-card {
+  background: #1c1c1c;
+  border: 2px solid #0ff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+}
+
+.game-card a {
+  color: #0ff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.game-card a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #0ff;
+}
