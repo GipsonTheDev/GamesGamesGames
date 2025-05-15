@@ -1,44 +1,45 @@
-// Hashed password for user "gamer123" = "gamer123" (SHA-256)
 const users = {
-  "gamer123": "8d969eef6ecad3c29a3a629280e686cff8ca100df9f6c9c7f82cfc3d65c3f4f2"
+  player1: "gamesrock"
 };
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-  document.getElementById("loginSection").classList.toggle("hidden");
-});
+function handleLogin() {
+  const usernameInput = document.getElementById('username').value.trim();
+  const passwordInput = document.getElementById('password').value.trim();
+  const status = document.getElementById('loginStatus');
 
-// Hashing function
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
+  if(users[usernameInput] && users[usernameInput] === passwordInput) {
+    status.textContent = '';
+    document.getElementById('loginSection').classList.add('hidden');
 
-async function handleLogin() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  const hashed = await hashPassword(password);
+    document.getElementById('displayUsername').textContent = usernameInput;
 
-  if (users[username] && users[username] === hashed) {
-    document.getElementById("loginStatus").textContent = "Login successful!";
-    document.getElementById("displayUsername").textContent = username;
-    document.getElementById("userStats").classList.remove("hidden");
-    loadXPData(username);
+    fetch('xp_level.json')
+      .then(res => res.json())
+      .then(data => {
+        const userData = data[usernameInput];
+        if(userData) {
+          document.getElementById('xp').textContent = userData.xp;
+          document.getElementById('level').textContent = userData.level;
+        } else {
+          document.getElementById('xp').textContent = 0;
+          document.getElementById('level').textContent = 0;
+        }
+        document.getElementById('userStats').classList.remove('hidden');
+      })
+      .catch(() => {
+        document.getElementById('xp').textContent = '?';
+        document.getElementById('level').textContent = '?';
+        document.getElementById('userStats').classList.remove('hidden');
+      });
   } else {
-    document.getElementById("loginStatus").textContent = "Incorrect login.";
+    status.textContent = 'Invalid username or password';
   }
 }
 
-async function loadXPData(username) {
-  try {
-    const response = await fetch("xp_level.json");
-    const data = await response.json();
-
-    const userData = data[username];
-    document.getElementById("xp").textContent = userData?.xp ?? 0;
-    document.getElementById("level").textContent = userData?.level ?? 1;
-  } catch (err) {
-    console.error("Error loading XP data:", err);
-  }
-}
+// Optional: Clear login status message on typing to avoid confusion
+document.getElementById('username').addEventListener('input', () => {
+  document.getElementById('loginStatus').textContent = '';
+});
+document.getElementById('password').addEventListener('input', () => {
+  document.getElementById('loginStatus').textContent = '';
+});
