@@ -8,8 +8,13 @@ const levelText = document.getElementById('level');
 const loginStatus = document.getElementById('loginStatus');
 const modeToggle = document.getElementById('modeToggle');
 const modeLabel = document.getElementById('modeLabel');
+const submitBtn = document.querySelector('#loginSection button'); // The submit button inside loginSection
 
 let xpData = {};
+let xpDataLoaded = false;  // Track if data loaded
+
+// Initially disable submit button until data loads
+submitBtn.disabled = true;
 
 // Toggle login section on button click
 loginBtn.addEventListener('click', () => {
@@ -24,13 +29,21 @@ async function fetchXPData() {
     const response = await fetch('xp_level.json');
     if (!response.ok) throw new Error('Failed to load XP data');
     xpData = await response.json();
+    xpDataLoaded = true;
+    submitBtn.disabled = false; // Enable login submit once data is ready
   } catch (error) {
     console.error(error);
+    loginStatus.textContent = 'Error loading user data. Try refreshing.';
   }
 }
 
 // Login Handler
 async function handleLogin() {
+  if (!xpDataLoaded) {
+    loginStatus.textContent = 'User data still loading. Please wait...';
+    return;
+  }
+
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value; // You can validate later
 
@@ -39,7 +52,12 @@ async function handleLogin() {
     return;
   }
 
-  if (!xpData[username]) {
+  // For case-insensitive match, normalize keys and username:
+  const foundUserKey = Object.keys(xpData).find(
+    key => key.toLowerCase() === username.toLowerCase()
+  );
+
+  if (!foundUserKey) {
     loginStatus.textContent = 'User not found.';
     return;
   }
@@ -49,9 +67,9 @@ async function handleLogin() {
   loginSection.classList.add('hidden');
   userStats.classList.remove('hidden');
 
-  displayUsername.textContent = username;
+  displayUsername.textContent = foundUserKey; // Display actual username with original casing
 
-  updateXPBar(username);
+  updateXPBar(foundUserKey);
 }
 
 // Update XP bar width and text
