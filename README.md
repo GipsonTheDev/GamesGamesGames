@@ -13,7 +13,7 @@ to logic-based puzzles, sandbox simulations, and beyond. It serves as both a fun
 learning game development through hands-on creation. All games live within one shared codebase, allowing for efficient expansion 
 and creative experimentation.
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
 
 🎯 Goals:
 
@@ -25,7 +25,7 @@ and creative experimentation.
 
 4 - Focus on simplicity, reusability, and modular design to support ongoing growth.
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
 
 🧃 Types of Games Included (or Planned)
 Below are the games we intend to add to the website:
@@ -40,7 +40,7 @@ Below are the games we intend to add to the website:
 
 🧱 Blockverse – Creative sandbox with terrain manipulation and building tools.
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
 
 📂 Repository Structure 
 Here are the key files used in this project:
@@ -57,10 +57,10 @@ apis.jar – A compiled backend utility containing external API support.
 
 *.cs – C# scripts for any Unity-based or logic-driven components.
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
 
 🛠️ Technologies Used: Languages: JavaScript, HTML, CSS, Python, Java, C#
 
 Engines/Tools: Custom-built with Web APIs, server-side scripts, and Unity (for C# modules)
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
