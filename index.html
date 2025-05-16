@@ -6,7 +6,7 @@
   <title>GamesGamesGames</title>
   <link rel="stylesheet" href="3_styling.css" />
   <style>
-    /* Minimal inline for demo - ideally move to CSS */
+  
     body {
       background: black;
       color: gray;
@@ -159,13 +159,12 @@
       user-select: none;
     }
 
-    /* --- New Styles for Games List Section (can also go in 3_styling.css) --- */
     .hidden {
       display: none !important;
     }
 
     #gamesListSection {
-        margin-top: 30px; /* Add some space above the section */
+        margin-top: 30px;
         padding: 20px;
         background-color: #111;
         border: 1px solid #333;
@@ -179,15 +178,15 @@
     }
 
     #gamesListContainer {
-        display: grid; /* Use grid for a nice layout */
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
-        gap: 15px; /* Space between grid items */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
         padding: 0;
-        list-style: none; /* Remove default list styles if using ul/li */
+        list-style: none;
     }
 
     #gamesListContainer a {
-        display: block; /* Make links block level for padding */
+        display: block;
         background-color: #222;
         color: #fff;
         text-decoration: none;
@@ -200,9 +199,9 @@
 
     #gamesListContainer a:hover {
         background-color: #444;
-        transform: translateY(-3px); /* Slight lift effect */
+        transform: translateY(-3px);
     }
-    /* --- End of New Styles --- */
+    
   </style>
 </head>
 <body>
@@ -219,20 +218,18 @@
   </nav>
 
   <main>
-    {/* Welcome card with dynamic time */}
+    
     <section class="welcome-card" id="welcomeCard">
       <h2>Welcome Back!</h2>
       <p id="dateTimeDisplay"></p>
     </section>
 
-    {/* Quick action buttons */}
     <section class="quick-actions">
       <button id="viewStatsBtn">View Stats</button>
       <button id="settingsBtn">Settings</button>
       <button id="helpBtn">Help</button>
     </section>
 
-    {/* Notifications panel */}
     <section class="notifications" aria-live="polite" aria-atomic="true" role="region">
       <h3>Notifications</h3>
       <ul id="notificationList">
@@ -242,7 +239,6 @@
       </ul>
     </section>
 
-    {/* Login & User Stats Section */}
     <section class="login-section hidden" id="loginSection">
       <input type="text" id="username" placeholder="Username" autocomplete="username"/>
       <input type="password" id="password" placeholder="Password" autocomplete="current-password"/>
@@ -259,7 +255,6 @@
       <p>Level: <span id="level"></span></p>
     </section>
 
-    {/* New GUI/UI section */}
     <section class="controls">
       <h3>Customize Your Experience</h3>
 
@@ -281,14 +276,12 @@
       </div>
     </section>
 
-    {/* New section for games list - Added this section */}
     <section id="gamesListSection" class="hidden">
       <h2>Available Games</h2>
       <div id="gamesListContainer">
-        {/* Game links will be populated here by JavaScript */}
+
       </div>
     </section>
-    {/* End of New section for games list */}
 
   </main>
 
