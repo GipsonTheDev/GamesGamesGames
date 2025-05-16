@@ -2,9 +2,9 @@
 
 Welcome to the official repository for GamesGamesGames — a creative, ever-evolving collection of mini-games, 
 prototypes, and full experiences all developed under one unified project. Whether you're here to play, build, or contribute, 
-this is the central hub for everything related to GGG.
+this is the central hub for everything related to gaming!
 
----------------------------------------------------------------------–--------------------------------------------------------------
+---------------------------------------------------------------------–----------
 
 🧩 What is GamesGamesGames?
 
