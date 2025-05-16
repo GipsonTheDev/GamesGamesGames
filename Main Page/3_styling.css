@@ -1,21 +1,22 @@
-/* Colors: dark purple background, neon aqua highlights, soft text */
+/* Main background black, text gray, buttons white */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #1c0033;
-  color: #aaffff;
+  background: #000000; /* pure black */
+  color: #b0b0b0; /* soft gray for text */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
-  background-color: #3d0073;
+  background-color: #121212; /* very dark gray */
   padding: 20px;
   text-align: center;
   font-weight: 900;
   font-size: 2.5rem;
   letter-spacing: 0.1em;
-  color: #00fff7;
-  text-shadow: 0 0 10px #00fff7;
+  color: #ffffff; /* white header text */
+  text-shadow: 0 0 5px #444444;
 }
 
 nav {
@@ -23,13 +24,13 @@ nav {
   justify-content: center;
   gap: 25px;
   padding: 15px 0;
-  background: #2a004d;
-  box-shadow: 0 4px 6px rgba(0, 255, 247, 0.3);
+  background: #1a1a1a; /* dark gray nav background */
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 nav a,
 nav button {
-  color: #00fff7;
+  color: #b0b0b0; /* gray links */
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -41,8 +42,7 @@ nav button {
 
 nav a:hover,
 nav button:hover {
-  color: #00b8a9;
-  text-shadow: 0 0 8px #00b8a9;
+  color: #ffffff; /* white on hover */
 }
 
 main {
@@ -55,15 +55,14 @@ main {
 h2 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #33ffff;
-  text-shadow: 0 0 6px #33ffff;
+  color: #e0e0e0; /* lighter gray */
 }
 
 .cta {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 30px;
-  color: #66ffff;
+  color: #c0c0c0;
 }
 
 .login-section input {
@@ -72,33 +71,33 @@ h2 {
   margin: 8px auto;
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #00fff7;
-  background-color: #0d0020;
-  color: #aaffff;
+  border: 2px solid #ffffff; /* white border */
+  background-color: #222222;
+  color: #e0e0e0;
   font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
 .login-section input:focus {
-  border-color: #33ffff;
+  border-color: #f0f0f0; /* lighter white */
   outline: none;
 }
 
 .login-section button {
   padding: 10px 30px;
-  background-color: #00fff7;
+  background-color: #ffffff; /* white button */
   border: none;
   border-radius: 12px;
-  color: #1c0033;
+  color: #000000; /* black text on button */
   font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 0 12px #00fff7;
+  box-shadow: 0 0 8px #888888;
   transition: background-color 0.3s ease;
 }
 
 .login-section button:hover {
-  background-color: #33ffff;
+  background-color: #e6e6e6; /* slightly gray on hover */
 }
 
 #loginStatus {
@@ -110,25 +109,26 @@ h2 {
 /* User Stats */
 #userStats {
   margin-top: 30px;
-  background: #2a004d;
+  background: #121212;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 25px #00fff7aa;
+  box-shadow: 0 0 12px #444444aa;
+  color: #d0d0d0;
 }
 
 .xp-bar-container {
   width: 80%;
   height: 25px;
-  background-color: #0d0020;
+  background-color: #222222;
   border-radius: 15px;
   margin: 15px auto;
-  box-shadow: inset 0 0 5px #33ffffaa;
+  box-shadow: inset 0 0 5px #444444aa;
   overflow: hidden;
 }
 
 #xpBar {
   height: 100%;
-  background: linear-gradient(90deg, #00fff7, #33ffff);
+  background: linear-gradient(90deg, #bbbbbb, #eeeeee);
   width: 0%;
   transition: width 0.5s ease;
   border-radius: 15px 0 0 15px;
@@ -137,21 +137,22 @@ h2 {
 #xpText {
   margin: 8px 0;
   font-weight: 600;
+  color: #c0c0c0;
 }
 
 /* Controls Section */
 .controls {
   margin-top: 50px;
-  background: #2a004d;
+  background: #121212;
   padding: 25px 30px;
   border-radius: 20px;
-  box-shadow: 0 0 30px #00fff7bb;
+  box-shadow: 0 0 20px #444444bb;
+  color: #d0d0d0;
 }
 
 .controls h3 {
   margin-bottom: 20px;
-  color: #33ffff;
-  text-shadow: 0 0 8px #33ffff;
+  color: #ffffff;
 }
 
 .control-group {
@@ -166,17 +167,16 @@ h2 {
   display: block;
   margin-bottom: 8px;
   font-weight: 700;
-  color: #aaffff;
-  text-shadow: 0 0 4px #00fff7bb;
+  color: #c0c0c0;
 }
 
 .control-group input[type="range"] {
   width: 100%;
   -webkit-appearance: none;
-  background: #0d0020;
+  background: #222222;
   height: 10px;
   border-radius: 10px;
-  box-shadow: inset 0 0 5px #00fff7aa;
+  box-shadow: inset 0 0 5px #555555aa;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -187,29 +187,46 @@ h2 {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #00fff7;
+  background: #ffffff;
   cursor: pointer;
-  box-shadow: 0 0 12px #00fff7;
+  box-shadow: 0 0 12px #cccccc;
   transition: background-color 0.3s ease;
 }
 
 .control-group input[type="range"]:hover::-webkit-slider-thumb {
-  background-color: #33ffff;
+  background-color: #e6e6e6;
 }
 
 .control-group button {
   padding: 12px 25px;
   margin-right: 15px;
-  background-color: #00fff7;
+  background-color: #ffffff;
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  color: #1c0033;
+  color: #000000;
   cursor: pointer;
-  box-shadow: 0 0 20px #00fff7bb;
+  box-shadow: 0 0 12px #888888bb;
   transition: background-color 0.3s ease;
 }
 
 .control-group button:hover {
-  background-color: #33ffff;
+  background-color: #e6e6e6;
+}
+
+/* Spinner container centered */
+.loading-spinner {
+  border: 5px solid #222222; /* dark gray background circle */
+  border-top: 5px solid #ffffff; /* white spinner color */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

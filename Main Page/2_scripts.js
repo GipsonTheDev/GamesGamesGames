@@ -9,12 +9,23 @@ const loginStatus = document.getElementById('loginStatus');
 const modeToggle = document.getElementById('modeToggle');
 const modeLabel = document.getElementById('modeLabel');
 const submitBtn = document.querySelector('#loginSection button'); // The submit button inside loginSection
+const loadingSpinner = document.getElementById('loading');
 
 let xpData = {};
 let xpDataLoaded = false;  // Track if data loaded
 
 // Initially disable submit button until data loads
 submitBtn.disabled = true;
+
+// Show spinner
+function showLoading() {
+  loadingSpinner.classList.remove('hidden');
+}
+
+// Hide spinner
+function hideLoading() {
+  loadingSpinner.classList.add('hidden');
+}
 
 // Toggle login section on button click
 loginBtn.addEventListener('click', () => {
@@ -26,6 +37,7 @@ loginBtn.addEventListener('click', () => {
 // Fetch XP data from JSON file on page load
 async function fetchXPData() {
   try {
+    showLoading();
     const response = await fetch('xp_level.json');
     if (!response.ok) throw new Error('Failed to load XP data');
     xpData = await response.json();
@@ -34,10 +46,12 @@ async function fetchXPData() {
   } catch (error) {
     console.error(error);
     loginStatus.textContent = 'Error loading user data. Try refreshing.';
+  } finally {
+    hideLoading();
   }
 }
 
-// Login Handler
+// Login Handler with loading animation
 async function handleLogin() {
   if (!xpDataLoaded) {
     loginStatus.textContent = 'User data still loading. Please wait...';
@@ -52,13 +66,20 @@ async function handleLogin() {
     return;
   }
 
-  // For case-insensitive match, normalize keys and username:
+  // Show spinner while "processing" login
+  showLoading();
+
+  // Simulate server processing delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Case-insensitive user check
   const foundUserKey = Object.keys(xpData).find(
     key => key.toLowerCase() === username.toLowerCase()
   );
 
   if (!foundUserKey) {
     loginStatus.textContent = 'User not found.';
+    hideLoading();
     return;
   }
 
@@ -67,9 +88,11 @@ async function handleLogin() {
   loginSection.classList.add('hidden');
   userStats.classList.remove('hidden');
 
-  displayUsername.textContent = foundUserKey; // Display actual username with original casing
+  displayUsername.textContent = foundUserKey; // Display original casing
 
   updateXPBar(foundUserKey);
+
+  hideLoading();
 }
 
 // Update XP bar width and text
@@ -80,7 +103,7 @@ function updateXPBar(username) {
   const xp = user.xp;
   const level = user.level;
 
-  // For demo: Assuming level up every 1000 XP * level number
+  // Assuming level up every 1000 XP * level number
   const maxXPForLevel = level * 1000;
   const percent = Math.min(100, (xp / maxXPForLevel) * 100);
 
@@ -99,6 +122,9 @@ modeToggle.addEventListener('change', () => {
     modeLabel.textContent = 'Dark Mode';
   }
 });
+
+// Attach handleLogin to submit button click
+submitBtn.addEventListener('click', handleLogin);
 
 // Initial Load
 fetchXPData();

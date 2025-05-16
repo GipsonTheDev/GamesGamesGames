@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GamesGamesGames</title>
   <link rel="stylesheet" href="3_styling.css" />
+  <style>
+    /* Spinner styles */
+    .loading-spinner {
+      border: 5px solid #222222; /* dark gray background circle */
+      border-top: 5px solid #ffffff; /* white spinner color */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Additional styles for XP bar container */
+    .xp-bar-container {
+      width: 100%;
+      background-color: #444; /* dark gray */
+      border-radius: 10px;
+      overflow: hidden;
+      height: 24px;
+      margin: 10px 0;
+    }
+
+    #xpBar {
+      height: 100%;
+      background-color: white;
+      width: 0%;
+      transition: width 0.5s ease-in-out;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -22,6 +60,9 @@
   <main>
     <h2>Welcome to the Ultimate Gaming Hub!</h2>
     <p class="cta">Play. Compete. Conquer.</p>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="loading-spinner hidden"></div>
 
     <section class="login-section hidden" id="loginSection">
       <input type="text" id="username" placeholder="Username" />
@@ -60,6 +101,99 @@
     </section>
   </main>
 
-  <script src="2_scripts.js"></script>
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const loginSection = document.getElementById('loginSection');
+    const userStats = document.getElementById('userStats');
+    const displayUsername = document.getElementById('displayUsername');
+    const xpBar = document.getElementById('xpBar');
+    const xpText = document.getElementById('xpText');
+    const levelText = document.getElementById('level');
+    const loginStatus = document.getElementById('loginStatus');
+    const loadingSpinner = document.getElementById('loading');
+
+    let xpData = {};
+
+    // Toggle login section on button click
+    loginBtn.addEventListener('click', () => {
+      loginSection.classList.toggle('hidden');
+      userStats.classList.add('hidden');
+      loginStatus.textContent = '';
+    });
+
+    function showLoading() {
+      loadingSpinner.classList.remove('hidden');
+    }
+
+    function hideLoading() {
+      loadingSpinner.classList.add('hidden');
+    }
+
+    // Fetch XP data from JSON file on page load
+    async function fetchXPData() {
+      try {
+        showLoading();
+        const response = await fetch('xp_level.json');
+        if (!response.ok) throw new Error('Failed to load XP data');
+        xpData = await response.json();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // Login Handler
+    async function handleLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        loginStatus.textContent = 'Please enter username and password.';
+        return;
+      }
+
+      showLoading();
+
+      // Simulate delay
+      await new Promise(resolve => setTimeout(resolve, 700));
+
+      if (!xpData[username]) {
+        loginStatus.textContent = 'User not found.';
+        hideLoading();
+        return;
+      }
+
+      loginStatus.textContent = '';
+      loginSection.classList.add('hidden');
+      userStats.classList.remove('hidden');
+
+      displayUsername.textContent = username;
+
+      updateXPBar(username);
+
+      hideLoading();
+    }
+
+    // Update XP bar width and text
+    function updateXPBar(username) {
+      const user = xpData[username];
+      if (!user) return;
+
+      const xp = user.xp;
+      const level = user.level;
+
+      // Assuming level up every 1000 XP * level number
+      const maxXPForLevel = level * 1000;
+      const percent = Math.min(100, (xp / maxXPForLevel) * 100);
+
+      xpBar.style.width = `${percent}%`;
+      xpText.textContent = `${xp} / ${maxXPForLevel} XP`;
+      levelText.textContent = level;
+    }
+
+    // Initial Load
+    fetchXPData();
+  </script>
 </body>
 </html>
