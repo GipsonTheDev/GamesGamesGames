@@ -148,11 +148,12 @@ const gameFiles = [
     "Geometry Dash v1.html", // Note the "v1"
     "Konekt.html",
     "RetroHaunt.html",
-    "Fnaf",
-    "Paper Minecraft v11",
-    "Racer",
-    "DuckLife1",
+    "Fnaf.html",
+    "Paper Minecraft v11.html",
+    "Racer.html",
+    "DuckLife1.html",
     "Square.html",
+    "Raytraced Minecraft (3D).html",
     "chroma.html",
     "chromedino.html",
     "eaglercraft_1.5.2.html", // Note the version number
