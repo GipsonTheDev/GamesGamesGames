@@ -158,6 +158,51 @@
       font-size: 0.9rem;
       user-select: none;
     }
+
+    /* --- New Styles for Games List Section (can also go in 3_styling.css) --- */
+    .hidden {
+      display: none !important;
+    }
+
+    #gamesListSection {
+        margin-top: 30px; /* Add some space above the section */
+        padding: 20px;
+        background-color: #111;
+        border: 1px solid #333;
+        border-radius: 12px;
+    }
+
+    #gamesListSection h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #eee;
+    }
+
+    #gamesListContainer {
+        display: grid; /* Use grid for a nice layout */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+        gap: 15px; /* Space between grid items */
+        padding: 0;
+        list-style: none; /* Remove default list styles if using ul/li */
+    }
+
+    #gamesListContainer a {
+        display: block; /* Make links block level for padding */
+        background-color: #222;
+        color: #fff;
+        text-decoration: none;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+        font-weight: 600;
+    }
+
+    #gamesListContainer a:hover {
+        background-color: #444;
+        transform: translateY(-3px); /* Slight lift effect */
+    }
+    /* --- End of New Styles --- */
   </style>
 </head>
 <body>
@@ -167,27 +212,27 @@
 
   <nav>
     <a href="#">Home</a>
-    <a href="#">Games</a>
+    <a href="#" id="gamesNavLink">Games</a> {/* Added id here */}
     <a href="#">About</a>
     <a href="#">Contact</a>
     <button id="loginBtn">Login</button>
   </nav>
 
   <main>
-    <!-- Welcome card with dynamic time -->
+    {/* Welcome card with dynamic time */}
     <section class="welcome-card" id="welcomeCard">
       <h2>Welcome Back!</h2>
       <p id="dateTimeDisplay"></p>
     </section>
 
-    <!-- Quick action buttons -->
+    {/* Quick action buttons */}
     <section class="quick-actions">
       <button id="viewStatsBtn">View Stats</button>
       <button id="settingsBtn">Settings</button>
       <button id="helpBtn">Help</button>
     </section>
 
-    <!-- Notifications panel -->
+    {/* Notifications panel */}
     <section class="notifications" aria-live="polite" aria-atomic="true" role="region">
       <h3>Notifications</h3>
       <ul id="notificationList">
@@ -197,7 +242,7 @@
       </ul>
     </section>
 
-    <!-- Login & User Stats Section -->
+    {/* Login & User Stats Section */}
     <section class="login-section hidden" id="loginSection">
       <input type="text" id="username" placeholder="Username" autocomplete="username"/>
       <input type="password" id="password" placeholder="Password" autocomplete="current-password"/>
@@ -214,7 +259,7 @@
       <p>Level: <span id="level"></span></p>
     </section>
 
-    <!-- New GUI/UI section -->
+    {/* New GUI/UI section */}
     <section class="controls">
       <h3>Customize Your Experience</h3>
 
@@ -235,12 +280,22 @@
         <button id="applySettings">Apply Settings</button>
       </div>
     </section>
+
+    {/* New section for games list - Added this section */}
+    <section id="gamesListSection" class="hidden">
+      <h2>Available Games</h2>
+      <div id="gamesListContainer">
+        {/* Game links will be populated here by JavaScript */}
+      </div>
+    </section>
+    {/* End of New section for games list */}
+
   </main>
 
   <footer>
-    &copy; 2025 GamesGamesGames. All rights reserved. Follow us on 
-    <a href="#" style="color:white; text-decoration:none;">Twitter</a>, 
-    <a href="#" style="color:white; text-decoration:none;">Discord</a>, 
+    &copy; 2025 GamesGamesGames. All rights reserved. Follow us on
+    <a href="#" style="color:white; text-decoration:none;">Twitter</a>,
+    <a href="#" style="color:white; text-decoration:none;">Discord</a>,
     <a href="#" style="color:white; text-decoration:none;">Instagram</a>
   </footer>
 
