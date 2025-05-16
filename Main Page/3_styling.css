@@ -1,184 +1,245 @@
-/* Main background black, text gray, buttons white */
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #000000; /* pure black */
-  color: #b0b0b0; /* soft gray for text */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #000; /* Black background */
+  color: #bbb; /* Light gray text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 header {
-  background-color: #121212; /* very dark gray */
   padding: 20px;
   text-align: center;
-  font-weight: 900;
-  font-size: 2.5rem;
-  letter-spacing: 0.1em;
-  color: #ffffff; /* white header text */
-  text-shadow: 0 0 5px #444444;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+}
+
+header h1 {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 nav {
+  background-color: #111;
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 15px 0;
-  background: #1a1a1a; /* dark gray nav background */
-  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-nav a,
-nav button {
-  color: #b0b0b0; /* gray links */
+nav a {
+  color: #bbb;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 nav a:hover,
-nav button:hover {
-  color: #ffffff; /* white on hover */
-}
-
-main {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #e0e0e0; /* lighter gray */
-}
-
-.cta {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #c0c0c0;
-}
-
-.login-section input {
-  display: block;
-  width: 80%;
-  margin: 8px auto;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #ffffff; /* white border */
-  background-color: #222222;
-  color: #e0e0e0;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.login-section input:focus {
-  border-color: #f0f0f0; /* lighter white */
+nav a:focus {
+  background-color: #444;
+  color: #fff;
   outline: none;
 }
 
-.login-section button {
-  padding: 10px 30px;
-  background-color: #ffffff; /* white button */
+nav button#loginBtn {
+  background-color: #fff; /* white button */
+  color: #000;
   border: none;
-  border-radius: 12px;
-  color: #000000; /* black text on button */
+  padding: 8px 16px;
   font-weight: 700;
-  font-size: 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 0 8px #888888;
   transition: background-color 0.3s ease;
 }
 
-.login-section button:hover {
-  background-color: #e6e6e6; /* slightly gray on hover */
+nav button#loginBtn:hover {
+  background-color: #ddd;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px 40px;
+  flex-grow: 1;
+}
+
+h2 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.cta {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #888;
+  font-style: italic;
+}
+
+/* Login section */
+.login-section {
+  max-width: 400px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-section input[type="text"],
+.login-section input[type="password"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #eee;
+  transition: background-color 0.3s ease;
+}
+
+.login-section input[type="text"]:focus,
+.login-section input[type="password"]:focus {
+  outline: 2px solid #fff;
+  background-color: #333;
+}
+
+.login-section button {
+  padding: 12px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-section button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.login-section button:hover:not(:disabled) {
+  background-color: #ddd;
 }
 
 #loginStatus {
-  margin-top: 10px;
-  color: #ff5555;
+  color: #f88;
   font-weight: 600;
+  min-height: 24px;
+  text-align: center;
 }
 
-/* User Stats */
+/* User stats section */
 #userStats {
-  margin-top: 30px;
-  background: #121212;
+  max-width: 400px;
+  margin: 0 auto 40px;
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 12px #444444aa;
-  color: #d0d0d0;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-align: center;
+  color: #ccc;
+}
+
+#userStats h3 {
+  margin-bottom: 12px;
+  color: #fff;
+  font-weight: 700;
 }
 
 .xp-bar-container {
-  width: 80%;
-  height: 25px;
-  background-color: #222222;
-  border-radius: 15px;
-  margin: 15px auto;
-  box-shadow: inset 0 0 5px #444444aa;
+  width: 100%;
+  height: 20px;
+  background-color: #222;
+  border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: inset 0 0 5px #000;
 }
 
 #xpBar {
   height: 100%;
-  background: linear-gradient(90deg, #bbbbbb, #eeeeee);
+  background: linear-gradient(90deg, #fff 0%, #ccc 100%);
   width: 0%;
   transition: width 0.5s ease;
-  border-radius: 15px 0 0 15px;
+  border-radius: 10px 0 0 10px;
 }
 
 #xpText {
-  margin: 8px 0;
-  font-weight: 600;
-  color: #c0c0c0;
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
 }
 
-/* Controls Section */
+#level {
+  font-weight: 700;
+  color: #eee;
+  font-size: 1.1rem;
+}
+
+/* Controls section */
 .controls {
-  margin-top: 50px;
-  background: #121212;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 14px;
   padding: 25px 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #444444bb;
-  color: #d0d0d0;
+  box-shadow: 0 0 10px #222 inset;
 }
 
 .controls h3 {
+  color: #eee;
   margin-bottom: 20px;
-  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
 }
 
 .control-group {
-  margin-bottom: 25px;
-  text-align: left;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .control-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-  color: #c0c0c0;
+  color: #999;
+  font-weight: 600;
+  flex: 1;
+  user-select: none;
 }
 
 .control-group input[type="range"] {
-  width: 100%;
+  flex: 3;
   -webkit-appearance: none;
-  background: #222222;
-  height: 10px;
+  height: 8px;
+  background: #444;
   border-radius: 10px;
-  box-shadow: inset 0 0 5px #555555aa;
+  outline: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .control-group input[type="range"]::-webkit-slider-thumb {
@@ -187,46 +248,73 @@ h2 {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #fff;
   cursor: pointer;
-  box-shadow: 0 0 12px #cccccc;
+  box-shadow: 0 0 5px #fff;
+  border: 1px solid #999;
   transition: background-color 0.3s ease;
 }
 
-.control-group input[type="range"]:hover::-webkit-slider-thumb {
-  background-color: #e6e6e6;
+.control-group input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: #ddd;
 }
 
+.control-group input[type="range"]:focus {
+  background: #555;
+}
+
+/* Buttons in controls */
 .control-group button {
-  padding: 12px 25px;
-  margin-right: 15px;
-  background-color: #ffffff;
+  background-color: #fff;
   border: none;
-  border-radius: 15px;
+  border-radius: 8px;
+  padding: 10px 18px;
   font-weight: 700;
-  color: #000000;
   cursor: pointer;
-  box-shadow: 0 0 12px #888888bb;
+  color: #000;
+  margin-left: 10px;
   transition: background-color 0.3s ease;
 }
 
 .control-group button:hover {
-  background-color: #e6e6e6;
+  background-color: #ddd;
 }
 
-/* Spinner container centered */
-.loading-spinner {
-  border: 5px solid #222222; /* dark gray background circle */
-  border-top: 5px solid #ffffff; /* white spinner color */
+/* Hide elements with hidden class */
+.hidden {
+  display: none !important;
+}
+
+/* Loading Spinner */
+#loadingSpinner {
+  border: 5px solid #222;
+  border-top: 5px solid #fff;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   animation: spin 1s linear infinite;
-  margin: 20px auto;
+  margin: 15px auto 0;
 }
 
-/* Spin animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Scrollbar styling (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
