@@ -148,6 +148,7 @@ const gameFiles = [
     "Geometry Dash v1.html", // Note the "v1"
     "Konekt.html",
     "RetroHaunt.html",
+    "Fnaf",
     "Square.html",
     "chroma.html",
     "chromedino.html",
