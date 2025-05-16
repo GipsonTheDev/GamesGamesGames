@@ -318,3 +318,52 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+/* Add this to your 3_styling.css file */
+
+/* Rule to hide elements (already present in your CSS, but listing for completeness) */
+.hidden {
+  display: none !important;
+}
+
+/* Styles for the main container of the games list */
+#gamesListSection {
+    margin-top: 30px; /* Add some space above the section */
+    padding: 20px;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+#gamesListSection h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #eee;
+}
+
+/* Styles for the container holding the game links */
+#gamesListContainer {
+    display: grid; /* Use grid for a nice layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+    gap: 15px; /* Space between grid items */
+    padding: 0; /* Remove default padding */
+    list-style: none; /* Remove default list styles if using ul/li */
+}
+
+/* Styles for each game link */
+#gamesListContainer a {
+    display: block; /* Make links block level for padding */
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: 600;
+}
+
+#gamesListContainer a:hover {
+    background-color: #444;
+    transform: translateY(-3px); /* Slight lift effect */
+}
