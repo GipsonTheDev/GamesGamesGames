@@ -158,7 +158,6 @@ const gameFiles = [
     "chromedino.html",
     "eaglercraft_1.5.2.html", // Note the version number
     "missile Command.html"
-    "echoAI.html"
 ];
 
 const gamesNavLink = document.getElementById('gamesNavLink');
